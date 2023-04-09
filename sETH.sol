@@ -551,4 +551,12 @@ contract SETH is ERC20 {
         _burn(msg.sender, _amount);
         payable(msg.sender).transfer(_amount);
     }
+    
+    receive() external payable {
+        _mint(msg.sender, msg.value);
+    }
+
+    fallback() external payable {
+        _mint(msg.sender, msg.value);
+    }
 }
